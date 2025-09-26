@@ -148,7 +148,7 @@ Your Birthday Girl 🎂💕
             <Sparkles className="text-yellow-400 w-8 h-8 ml-3" />
           </div>
           <p className="text-xl text-pink-500 mt-4">
-            Answer these with your heart, my beautiful angel 💕
+            Answer these with your heart, my beautiful devil 💕
           </p>
         </div>
 
