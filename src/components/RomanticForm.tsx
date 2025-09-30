@@ -137,54 +137,72 @@ Your Birthday Girl 🎂💕
   }, []);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-pink-100 via-rose-50 to-red-100 py-20 px-4">
+    <section className="min-h-screen bg-gradient-to-br from-pink-100 via-rose-50 to-red-100 py-12 sm:py-16 md:py-20 px-3 sm:px-4">
       <div className="max-w-4xl mx-auto">
-        <div ref={titleRef} className="text-center mb-16">
-          <div className="flex items-center justify-center mb-4">
-            <Heart className="text-pink-500 w-8 h-8 mr-3 fill-current" />
-            <h2 className="text-4xl md:text-6xl font-bold text-pink-600" style={{ fontFamily: 'Georgia, serif' }}>
+        <div ref={titleRef} className="text-center mb-8 sm:mb-12 md:mb-16">
+          <div className="flex items-center justify-center mb-3 sm:mb-4">
+            <Heart className="text-pink-500 w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 mr-2 sm:mr-3 fill-current" />
+            <h2
+              className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-pink-600"
+              style={{ fontFamily: "Georgia, serif" }}
+            >
               Love Questionnaire
             </h2>
-            <Sparkles className="text-yellow-400 w-8 h-8 ml-3" />
+            <Sparkles className="text-yellow-400 w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 ml-2 sm:ml-3" />
           </div>
-          <p className="text-xl text-pink-500 mt-4">
+          <p className="text-base xs:text-lg sm:text-xl text-pink-500 mt-2 sm:mt-4 px-2">
             Answer these with your heart, my beautiful devil 💕
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} ref={formRef} className="space-y-8">
+        <form
+          onSubmit={handleSubmit}
+          ref={formRef}
+          className="space-y-4 sm:space-y-6 md:space-y-8"
+        >
           {questions.map((question, index) => (
-            <div key={question.id} className="form-item bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-pink-200">
-              <h3 className="text-xl font-medium text-pink-700 mb-4 flex items-center">
-                <span className="text-2xl mr-3">💖</span>
+            <div
+              key={question.id}
+              className="form-item bg-white/70 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg border border-pink-200"
+            >
+              <h3 className="text-base xs:text-lg sm:text-xl font-medium text-pink-700 mb-3 sm:mb-4 flex items-center">
+                <span className="text-xl sm:text-2xl mr-2 sm:mr-3">💖</span>
                 {question.question}
               </h3>
-              
-              {question.type === 'checkbox' ? (
+
+              {question.type === "checkbox" ? (
                 <label className="flex items-center cursor-pointer group">
                   <input
                     type="checkbox"
-                    checked={answers[question.id] as boolean || false}
-                    onChange={(e) => handleInputChange(question.id, e.target.checked)}
+                    checked={(answers[question.id] as boolean) || false}
+                    onChange={(e) =>
+                      handleInputChange(question.id, e.target.checked)
+                    }
                     className="sr-only"
                   />
-                  <div className={`w-6 h-6 rounded-lg border-2 border-pink-400 mr-3 flex items-center justify-center transition-all duration-300 ${
-                    answers[question.id] ? 'bg-pink-500 border-pink-500' : 'group-hover:border-pink-500'
-                  }`}>
+                  <div
+                    className={`w-5 h-5 sm:w-6 sm:h-6 rounded-lg border-2 border-pink-400 mr-2 sm:mr-3 flex items-center justify-center transition-all duration-300 ${
+                      answers[question.id]
+                        ? "bg-pink-500 border-pink-500"
+                        : "group-hover:border-pink-500"
+                    }`}
+                  >
                     {answers[question.id] && (
                       <span className="text-white text-sm">✓</span>
                     )}
                   </div>
-                  <span className="text-pink-600 group-hover:text-pink-700 transition-colors duration-300">
+                  <span className="text-sm xs:text-base sm:text-base text-pink-600 group-hover:text-pink-700 transition-colors duration-300">
                     {question.label}
                   </span>
                 </label>
               ) : (
                 <textarea
-                  value={answers[question.id] as string || ''}
-                  onChange={(e) => handleInputChange(question.id, e.target.value)}
+                  value={(answers[question.id] as string) || ""}
+                  onChange={(e) =>
+                    handleInputChange(question.id, e.target.value)
+                  }
                   placeholder={question.placeholder}
-                  className="w-full p-4 rounded-xl border border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition-all duration-300 bg-white/80 text-pink-700 placeholder-pink-400 resize-none"
+                  className="w-full p-3 sm:p-4 rounded-lg sm:rounded-xl border border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition-all duration-300 bg-white/80 text-sm xs:text-base text-pink-700 placeholder-pink-400 resize-none"
                   rows={3}
                 />
               )}
@@ -194,9 +212,9 @@ Your Birthday Girl 🎂💕
           <div className="text-center">
             <button
               type="submit"
-              className="inline-flex items-center bg-gradient-to-r from-pink-500 to-red-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-pink-600 hover:to-red-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 xs:px-8 sm:px-10 py-3 xs:py-4 rounded-full text-base xs:text-lg font-medium hover:from-pink-600 hover:to-red-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              <Send className="w-5 h-5 mr-2" />
+              <Send className="w-4 h-4 xs:w-5 xs:h-5 mr-2" />
               Send My Love 💕
             </button>
           </div>

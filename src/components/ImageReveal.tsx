@@ -11,7 +11,8 @@ const ImageReveal: React.FC = () => {
   const shimmerRef = useRef<HTMLDivElement>(null);
 
   // Using a beautiful couple image from Pexels
-  const imageUrl = 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800';
+const imageUrl = "/images/imgg.jpg";
+
 
   useEffect(() => {
     if (!imageContainerRef.current) return;
@@ -75,90 +76,93 @@ const ImageReveal: React.FC = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-rose-100 py-20 px-4 flex items-center justify-center"
+      className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-rose-100 py-12 sm:py-16 md:py-20 px-3 sm:px-4 flex items-center justify-center"
     >
       <div className="max-w-4xl mx-auto text-center">
-        <div ref={titleRef} className="mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-pink-600 mb-4" style={{ fontFamily: 'Georgia, serif' }}>
+        <div ref={titleRef} className="mb-8 sm:mb-12 md:mb-16">
+          <h2
+            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-pink-600 mb-2 sm:mb-3 md:mb-4 px-2"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
             Our Perfect Moment
           </h2>
-          <p className="text-xl text-pink-500">
+          <p className="text-base xs:text-lg sm:text-xl text-pink-500 px-2">
             Watch our love come together piece by piece 💕
           </p>
         </div>
 
         <div className="relative">
-          <div 
+          <div
             ref={imageContainerRef}
-            className="relative w-80 h-80 md:w-96 md:h-96 mx-auto overflow-hidden"
+            className="relative w-64 h-64 xs:w-72 xs:h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 mx-auto overflow-hidden"
           >
             {/* Top-left piece */}
-            <div 
+            <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-tl-2xl shadow-lg"
-              style={{ 
+              style={{
                 backgroundImage: `url(${imageUrl})`,
-                backgroundSize: '200% 200%',
-                backgroundPosition: '0% 0%'
+                backgroundSize: "200% 200%",
+                backgroundPosition: "0% 0%",
               }}
             />
-            
+
             {/* Top-right piece */}
-            <div 
+            <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-tr-2xl shadow-lg"
-              style={{ 
-                left: '50%',
+              style={{
+                left: "50%",
                 backgroundImage: `url(${imageUrl})`,
-                backgroundSize: '200% 200%',
-                backgroundPosition: '100% 0%'
+                backgroundSize: "200% 200%",
+                backgroundPosition: "100% 0%",
               }}
             />
-            
+
             {/* Bottom-left piece */}
-            <div 
+            <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-bl-2xl shadow-lg"
-              style={{ 
-                top: '50%',
+              style={{
+                top: "50%",
                 backgroundImage: `url(${imageUrl})`,
-                backgroundSize: '200% 200%',
-                backgroundPosition: '0% 100%'
+                backgroundSize: "200% 200%",
+                backgroundPosition: "0% 100%",
               }}
             />
-            
+
             {/* Bottom-right piece */}
-            <div 
+            <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-br-2xl shadow-lg"
-              style={{ 
-                top: '50%',
-                left: '50%',
+              style={{
+                top: "50%",
+                left: "50%",
                 backgroundImage: `url(${imageUrl})`,
-                backgroundSize: '200% 200%',
-                backgroundPosition: '100% 100%'
+                backgroundSize: "200% 200%",
+                backgroundPosition: "100% 100%",
               }}
             />
 
             {/* Gift box shimmer effect */}
-            <div 
+            <div
               ref={shimmerRef}
               className="absolute inset-0 opacity-0 pointer-events-none"
               style={{
-                background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.8) 50%, transparent 70%)',
-                animation: 'shimmer 0.8s ease-out'
+                background:
+                  "linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.8) 50%, transparent 70%)",
+                animation: "shimmer 0.8s ease-out",
               }}
-            >
-            </div>
+            ></div>
           </div>
 
-          <div className="mt-8">
-            <p className="text-lg text-pink-600 italic">
-              "Just like these pieces come together to form a beautiful picture, 
+          <div className="mt-6 sm:mt-8 px-2">
+            <p className="text-sm xs:text-base sm:text-lg text-pink-600 italic">
+              "Just like these pieces come together to form a beautiful picture,
               we come together to create something magical... 🌟"
             </p>
           </div>
         </div>
       </div>
-      
+
       <style>{`
         @keyframes shimmer {
           0% {

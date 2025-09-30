@@ -73,35 +73,63 @@ const CakeCutting: React.FC<CakeCuttingProps> = ({ onComplete }) => {
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="fixed inset-0 z-50 bg-gradient-to-br from-yellow-200 via-orange-100 to-pink-200 flex items-center justify-center"
       onMouseMove={handleMouseMove}
       onClick={handleCakeClick}
-      style={{ cursor: 'default' }}
+      style={{ cursor: "default" }}
     >
       {/* Cake */}
-      <div ref={cakeRef} className="relative w-[200px] h-[200px] flex items-center justify-center">
-        <div className="text-9xl relative select-none" style={{ userSelect: 'none' }}>
+      <div
+        ref={cakeRef}
+        className="relative w-[150px] h-[150px] xs:w-[180px] xs:h-[180px] sm:w-[200px] sm:h-[200px] flex items-center justify-center"
+      >
+        <div
+          className="text-7xl xs:text-8xl sm:text-9xl relative select-none"
+          style={{ userSelect: "none" }}
+        >
           {/* Cake base */}
-          <span style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }}>🎂</span>
+          <span
+            style={{
+              position: "absolute",
+              left: 0,
+              top: 0,
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            🎂
+          </span>
           {/* Slice animation */}
           {slice && (
             <div
               className="absolute left-1/2 top-1/2"
               style={{
-                width: '100px',
-                height: '100px',
+                width: "100px",
+                height: "100px",
                 transform: `translate(-50%, -50%) rotate(${slice.angle}deg)`,
                 zIndex: 10,
-                pointerEvents: 'none',
+                pointerEvents: "none",
               }}
             >
               {/* Slice shape: triangle with cake emoji background */}
-              <svg width="100" height="100" viewBox="0 0 100 100" style={{ position: 'absolute', left: 0, top: 0 }}>
+              <svg
+                width="100"
+                height="100"
+                viewBox="0 0 100 100"
+                style={{ position: "absolute", left: 0, top: 0 }}
+              >
                 <defs>
-                  <pattern id="cakePattern" patternUnits="userSpaceOnUse" width="100" height="100">
-                    <text x="0" y="80" fontSize="100">🎂</text>
+                  <pattern
+                    id="cakePattern"
+                    patternUnits="userSpaceOnUse"
+                    width="100"
+                    height="100"
+                  >
+                    <text x="0" y="80" fontSize="100">
+                      🎂
+                    </text>
                   </pattern>
                 </defs>
                 <polygon
@@ -109,41 +137,44 @@ const CakeCutting: React.FC<CakeCuttingProps> = ({ onComplete }) => {
                   fill="url(#cakePattern)"
                   stroke="#fbbf24"
                   strokeWidth="2"
-                  style={{ filter: 'drop-shadow(0 2px 6px #fbbf24)' }}
+                  style={{ filter: "drop-shadow(0 2px 6px #fbbf24)" }}
                 />
               </svg>
             </div>
           )}
         </div>
       </div>
-      
+
       {/* Knife cursor (follows mouse, but default cursor is visible) */}
       <div
         ref={knifeRef}
-        className="pointer-events-none text-4xl"
+        className="pointer-events-none text-2xl xs:text-3xl sm:text-4xl"
         style={{
-          position: 'absolute',
+          position: "absolute",
           left: knifePos.x,
           top: knifePos.y,
-          transform: 'translate(-50%, -50%) rotate(45deg)',
+          transform: "translate(-50%, -50%) rotate(45deg)",
           zIndex: 100,
-          pointerEvents: 'none',
-          userSelect: 'none',
+          pointerEvents: "none",
+          userSelect: "none",
         }}
       >
         🔪
       </div>
-      
+
       {/* Instructions */}
-      <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center">
-        <h2 className="text-4xl font-bold text-orange-600 mb-4" style={{ fontFamily: 'Georgia, serif' }}>
+      <div className="absolute top-8 xs:top-12 sm:top-16 md:top-20 left-1/2 transform -translate-x-1/2 text-center px-3">
+        <h2
+          className="text-2xl xs:text-3xl sm:text-4xl font-bold text-orange-600 mb-2 sm:mb-3 md:mb-4"
+          style={{ fontFamily: "Georgia, serif" }}
+        >
           Cut the Birthday Cake! 🎂
         </h2>
-        <p className="text-xl text-orange-500">
+        <p className="text-base xs:text-lg sm:text-xl text-orange-500">
           Click on the cake to cut it! ({3 - cuts.length} cuts remaining)
         </p>
       </div>
-      
+
       {/* Celebration particles */}
       {cuts.length > 0 && (
         <div className="absolute inset-0 pointer-events-none">
@@ -154,7 +185,7 @@ const CakeCutting: React.FC<CakeCuttingProps> = ({ onComplete }) => {
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`
+                animationDelay: `${Math.random() * 2}s`,
               }}
             >
               🎉
