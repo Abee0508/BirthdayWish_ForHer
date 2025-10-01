@@ -68,8 +68,13 @@ const CaptureMemories: React.FC<CaptureMemoriesProps> = ({ onComplete }) => {
     <div className="fixed inset-0 z-50 bg-gradient-to-br from-pink-200 via-rose-100 to-purple-200 flex flex-col items-center justify-start px-3 sm:px-4 py-6 sm:py-8 overflow-y-auto">
       {/* Header */}
       <div className="text-center mb-6 sm:mb-8 animate-fadeIn">
-        <div className="text-4xl sm:text-6xl mb-3 sm:mb-4 animate-bounce">💕</div>
-        <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 mb-2 sm:mb-3" style={{ fontFamily: 'Georgia, serif' }}>
+        <div className="text-4xl sm:text-6xl mb-3 sm:mb-4 animate-bounce">
+          💕
+        </div>
+        <h2
+          className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 mb-2 sm:mb-3"
+          style={{ fontFamily: "Georgia, serif" }}
+        >
           Capture Your Live Moments! 📸
         </h2>
         <p className="text-sm xs:text-base sm:text-lg text-pink-500 mb-2 px-2">
@@ -106,7 +111,7 @@ const CaptureMemories: React.FC<CaptureMemoriesProps> = ({ onComplete }) => {
         type="file"
         accept="image/*"
         multiple
-        onChange={(e) => handleCapture(e, 'image')}
+        onChange={(e) => handleCapture(e, "image")}
         className="hidden"
       />
       <input
@@ -114,7 +119,7 @@ const CaptureMemories: React.FC<CaptureMemoriesProps> = ({ onComplete }) => {
         type="file"
         accept="video/*"
         multiple
-        onChange={(e) => handleCapture(e, 'video')}
+        onChange={(e) => handleCapture(e, "video")}
         className="hidden"
       />
 
@@ -125,7 +130,7 @@ const CaptureMemories: React.FC<CaptureMemoriesProps> = ({ onComplete }) => {
             {capturedMedia.map((media, index) => (
               <div key={index} className="relative group animate-scaleIn">
                 <div className="aspect-square rounded-lg overflow-hidden shadow-lg bg-white">
-                  {media.type === 'image' ? (
+                  {media.type === "image" ? (
                     <img
                       src={media.url}
                       alt={`Captured ${index + 1}`}
@@ -146,7 +151,7 @@ const CaptureMemories: React.FC<CaptureMemoriesProps> = ({ onComplete }) => {
                   <X size={16} />
                 </button>
                 <div className="absolute bottom-2 right-2 bg-white/80 backdrop-blur-sm rounded-full px-2 py-1 text-xs font-semibold text-pink-600">
-                  {media.type === 'image' ? '📸' : '🎥'}
+                  {media.type === "image" ? "📸" : "🎥"}
                 </div>
               </div>
             ))}
@@ -174,12 +179,13 @@ const CaptureMemories: React.FC<CaptureMemoriesProps> = ({ onComplete }) => {
           className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full shadow-xl transition-all duration-300 text-base sm:text-lg flex items-center gap-2 animate-pulse hover:animate-none"
         >
           <Heart size={24} fill="white" />
-          <span className="whitespace-nowrap">Continue to Final Message</span>
+          <span className="whitespace-nowrap">Continue to Questionnaire</span>
           <Check size={24} />
         </button>
         {capturedMedia.length > 0 && (
           <p className="text-xs sm:text-sm text-pink-500">
-            {capturedMedia.length} {capturedMedia.length === 1 ? 'moment' : 'moments'} captured! ✨
+            {capturedMedia.length}{" "}
+            {capturedMedia.length === 1 ? "moment" : "moments"} captured! ✨
           </p>
         )}
       </div>

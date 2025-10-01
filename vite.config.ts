@@ -14,8 +14,12 @@ export default defineConfig(({ mode }) => {
       {
         name: "api-middleware",
         configureServer(server) {
-          // Middleware to parse JSON request bodies
-          server.middlewares.use(bodyParser.json());
+          // Middleware to parse JSON request bodies with a higher limit
+          server.middlewares.use(
+            bodyParser.json({
+              limit: "50mb", // Increase limit to handle base64 data
+            })
+          );
 
           // Middleware to handle your API route
           server.middlewares.use(

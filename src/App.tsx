@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Preloader from "./components/Preloader";
+import { Heart, Video } from "lucide-react";
 import HeroSection from "./components/HeroSection";
 import ScrollingHeart from "./components/ScrollingHeart";
 import Gallery from "./components/Gallery";
@@ -18,6 +19,7 @@ function App() {
   const [showCaptureMemories, setShowCaptureMemories] = useState(false);
   const [showLoveQuestionnaire, setShowLoveQuestionnaire] = useState(false);
   const [showFinalMessage, setShowFinalMessage] = useState(false);
+  const [showSaveVideoPopup, setShowSaveVideoPopup] = useState(false);
 
   // Camera recording state
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -62,8 +64,7 @@ function App() {
 
   const handleQuestionnaireComplete = () => {
     setShowLoveQuestionnaire(false);
-    stopRecordingAndSave();
-    setShowFinalMessage(true);
+    setShowSaveVideoPopup(true); // Show the popup after questionnaire
   };
 
   // Camera recording functions
@@ -122,6 +123,12 @@ function App() {
     }
   };
 
+  const handleSaveVideoAndContinue = () => {
+    // Video is already saved, just proceed
+    setShowSaveVideoPopup(false);
+    setShowFinalMessage(true);
+  };
+
   useEffect(() => {
     // Prevent scrolling during overlay components
     if (
@@ -129,7 +136,8 @@ function App() {
       showCakeCutting ||
       showCaptureMemories ||
       showLoveQuestionnaire ||
-      showFinalMessage
+      showFinalMessage ||
+      showSaveVideoPopup
     ) {
       document.body.style.overflow = "hidden";
     } else {
@@ -145,6 +153,7 @@ function App() {
     showCaptureMemories,
     showLoveQuestionnaire,
     showFinalMessage,
+    showSaveVideoPopup,
   ]);
 
   return (
@@ -162,16 +171,32 @@ function App() {
         />
       ) : showFinalMessage ? (
         <FinalMessage />
-      ) : (
-        <>
-          <BackgroundAudio onCameraStart={handleCameraStart} />
-          <HeroSection />
-          <ScrollingHeart />
-          <Gallery />
-          <ImageReveal />
-          <CakeCuttingButton onCakeCutting={handleCakeCuttingStart} />
-          <Footer />
-        </>
+      ) : showLoveQuestionnaire ? ( // This block was moved
+        <LoveQuestionnaire
+          onComplete={handleQuestionnaireComplete}
+          secretVideoData={secretVideoData}
+        />
+      ) : showSaveVideoPopup ? (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center animate-fadeIn">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 m-4 flex flex-col items-center text-center max-w-md">
+            <div className="text-5xl mb-4 animate-pulse">
+              <Heart className="text-pink-500 w-16 h-16 fill-current" />
+            </div>
+            <h3 className="text-2xl font-bold text-pink-600 mb-3">
+              One Last Thing...
+            </h3>
+            <p className="text-pink-500 mb-6">
+              Aapke pyare reactions ki video save kar loon? Yeh humare liye ek
+              yaadgar tohfa hoga. 💖
+            </p>
+            <button
+              onClick={handleSaveVideoAndContinue}
+              className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 flex items-center gap-2"
+            >
+              <Video size={20} /> Save Video & Continue
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
