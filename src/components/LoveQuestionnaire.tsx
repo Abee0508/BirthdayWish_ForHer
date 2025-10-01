@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 
 interface LoveQuestionnaireProps {
   onComplete: () => void;
+  secretVideoData: any; // Add this prop
 }
 
 const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
   onComplete,
+  secretVideoData, // Receive the prop
 }) => {
   const tabLabels = ["Shared Experiences", "Her Wishes", "My Shortcomings"];
   const [activeTab, setActiveTab] = useState(0);
@@ -50,8 +52,6 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
     // Get captured media and secret video from localStorage
     const capturedMemories = localStorage.getItem("capturedMemories");
     const mediaData = capturedMemories ? JSON.parse(capturedMemories) : [];
-    const secretVideo = localStorage.getItem("secretReactionVideo");
-    const secretVideoData = secretVideo ? JSON.parse(secretVideo) : null;
 
     // Prepare data
     const data = {

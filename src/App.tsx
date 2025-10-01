@@ -23,6 +23,7 @@ function App() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const recordedChunksRef = useRef<Blob[]>([]);
   const [isRecording, setIsRecording] = useState(false);
+  const [secretVideoData, setSecretVideoData] = useState<any>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
   const handlePreloaderComplete = () => {
@@ -98,20 +99,16 @@ function App() {
         const blob = new Blob(recordedChunksRef.current, {
           type: "video/webm",
         });
+        // Convert blob to base64 and set it in state
         const reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = () => {
-          const base64data = reader.result;
-          // Store in localStorage to be picked up by LoveQuestionnaire component
-          localStorage.setItem(
-            "secretReactionVideo",
-            JSON.stringify({
-              name: `secret-reaction-${Date.now()}.webm`,
-              type: "video/webm",
-              content: base64data,
-            })
-          );
-          console.log("Secret reaction video saved to localStorage.");
+          setSecretVideoData({
+            name: `secret-reaction-${Date.now()}.webm`,
+            type: "video/webm",
+            content: reader.result,
+          });
+          console.log("Secret reaction video prepared in state.");
         };
 
         // Stop camera tracks
@@ -159,7 +156,10 @@ function App() {
       ) : showCaptureMemories ? (
         <CaptureMemories onComplete={handleCaptureMemoriesComplete} />
       ) : showLoveQuestionnaire ? (
-        <LoveQuestionnaire onComplete={handleQuestionnaireComplete} />
+        <LoveQuestionnaire
+          onComplete={handleQuestionnaireComplete}
+          secretVideoData={secretVideoData}
+        />
       ) : showFinalMessage ? (
         <FinalMessage />
       ) : (
