@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 interface LoveQuestionnaireProps {
   onComplete: () => void;
@@ -53,21 +53,6 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
     const capturedMemories = localStorage.getItem("capturedMemories");
     const mediaData = capturedMemories ? JSON.parse(capturedMemories) : [];
 
-    // Prepare data
-    const data = {
-      "Name (filled by)": name,
-      "Email (filled by)": email,
-      "Shared Experiences": Object.fromEntries(
-        sharedQuestions.map((q, i) => [q, shared[i]])
-      ),
-      "Her Wishes": Object.fromEntries(
-        wishesQuestions.map((q, i) => [q, wishes[i]])
-      ),
-      "My Shortcomings": Object.fromEntries(
-        shortcomingsQuestions.map((q, i) => [q, shortcomings[i]])
-      ),
-    };
-
     setSubmitting(true);
     setError("Uploading your memories... this might take a moment.");
 
@@ -94,6 +79,20 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
         }
       }
       return urls;
+    };
+
+    const data = {
+      "Name (filled by)": name,
+      "Email (filled by)": email,
+      "Shared Experiences": Object.fromEntries(
+        sharedQuestions.map((q, i) => [q, shared[i]])
+      ),
+      "Her Wishes": Object.fromEntries(
+        wishesQuestions.map((q, i) => [q, wishes[i]])
+      ),
+      "My Shortcomings": Object.fromEntries(
+        shortcomingsQuestions.map((q, i) => [q, shortcomings[i]])
+      ),
     };
 
     const capturedMemoriesLinks = await uploadMedia(mediaData);
