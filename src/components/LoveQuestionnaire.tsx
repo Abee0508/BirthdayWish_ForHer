@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface LoveQuestionnaireProps {
   onComplete: () => void;
@@ -54,6 +54,20 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
     const mediaData = capturedMemories ? JSON.parse(capturedMemories) : [];
 
     // Prepare data
+    const data = {
+      "Name (filled by)": name,
+      "Email (filled by)": email,
+      "Shared Experiences": Object.fromEntries(
+        sharedQuestions.map((q, i) => [q, shared[i]])
+      ),
+      "Her Wishes": Object.fromEntries(
+        wishesQuestions.map((q, i) => [q, wishes[i]])
+      ),
+      "My Shortcomings": Object.fromEntries(
+        shortcomingsQuestions.map((q, i) => [q, shortcomings[i]])
+      ),
+    };
+
     setSubmitting(true);
     setError("Uploading your memories... this might take a moment.");
 
@@ -82,22 +96,15 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
       return urls;
     };
 
-    const data = {
-      "Name (filled by)": name,
-      "Email (filled by)": email,
-      "Shared Experiences": Object.fromEntries(
-        sharedQuestions.map((q, i) => [q, shared[i]])
-      ),
-      "Her Wishes": Object.fromEntries(
-        wishesQuestions.map((q, i) => [q, wishes[i]])
-      ),
-      "My Shortcomings": Object.fromEntries(
-        shortcomingsQuestions.map((q, i) => [q, shortcomings[i]])
-      ),
-      "Captured Memories Links": await uploadMedia(mediaData),
-      "Secretly Recorded Video Link": secretVideoData
-        ? (await uploadMedia([secretVideoData]))[0]
-        : "No video recorded.",
+    const capturedMemoriesLinks = await uploadMedia(mediaData);
+    const secretVideoLink = secretVideoData
+      ? (await uploadMedia([secretVideoData]))[0]
+      : "No video recorded.";
+
+    const finalData = {
+      ...data,
+      "Captured Memories Links": capturedMemoriesLinks,
+      "Secretly Recorded Video Link": secretVideoLink,
     };
 
     try {
@@ -106,7 +113,7 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
+          body: JSON.stringify(finalData),
         }
       );
       if (res.ok) {
@@ -260,16 +267,22 @@ interface QuestionFormProps {
   setAnswers: (a: string[]) => void;
 }
 
-const QuestionForm: React.FC<QuestionFormProps> = ({ questions, answers, setAnswers }) => (
+const QuestionForm: React.FC<QuestionFormProps> = ({
+  questions,
+  answers,
+  setAnswers,
+}) => (
   <div className="space-y-6">
     {questions.map((q, idx) => (
       <div key={idx}>
-        <label className="block text-lg font-medium text-pink-700 mb-2">{q}</label>
+        <label className="block text-lg font-medium text-pink-700 mb-2">
+          {q}
+        </label>
         <textarea
           className="w-full border border-pink-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-pink-400 min-h-[60px]"
           placeholder="Apna jawab likhein..."
           value={answers[idx]}
-          onChange={e => {
+          onChange={(e) => {
             const newAnswers = [...answers];
             newAnswers[idx] = e.target.value;
             setAnswers(newAnswers);

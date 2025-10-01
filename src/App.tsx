@@ -25,6 +25,7 @@ function App() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const recordedChunksRef = useRef<Blob[]>([]);
   const [isRecording, setIsRecording] = useState(false);
+  const [secretVideoUrl, setSecretVideoUrl] = useState<string | null>(null);
   const [secretVideoData, setSecretVideoData] = useState<any>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
@@ -159,7 +160,7 @@ function App() {
       ) : showLoveQuestionnaire ? (
         <LoveQuestionnaire
           onComplete={handleQuestionnaireComplete}
-          secretVideoData={secretVideoData}
+          secretVideoData={secretVideoData} // Keep passing this for upload logic
         />
       ) : showFinalMessage ? (
         <FinalMessage />
