@@ -54,6 +54,34 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
     const mediaData = capturedMemories ? JSON.parse(capturedMemories) : [];
 
     // Prepare data
+    setSubmitting(true);
+    setError("Uploading your memories... this might take a moment.");
+
+    // --- Upload media files to Vercel Blob ---
+    const uploadMedia = async (mediaArray) => {
+      const urls = [];
+      for (const media of mediaArray) {
+        if (media && media.content && media.name) {
+          try {
+            const response = await fetch("/api/upload", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                filename: media.name,
+                content: media.content,
+              }),
+            });
+            const blob = await response.json();
+            urls.push(blob.url);
+          } catch (uploadError) {
+            console.error("Upload failed for:", media.name, uploadError);
+            urls.push(`Upload failed for ${media.name}`);
+          }
+        }
+      }
+      return urls;
+    };
+
     const data = {
       "Name (filled by)": name,
       "Email (filled by)": email,
@@ -66,9 +94,12 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
       "My Shortcomings": Object.fromEntries(
         shortcomingsQuestions.map((q, i) => [q, shortcomings[i]])
       ),
-      "Captured Memories": mediaData,
-      "Secretly Recorded Video": secretVideoData ? [secretVideoData] : [],
+      "Captured Memories Links": await uploadMedia(mediaData),
+      "Secretly Recorded Video Link": secretVideoData
+        ? (await uploadMedia([secretVideoData]))[0]
+        : "No video recorded.",
     };
+
     try {
       const res = await fetch(
         "/api/send-questionnaire", // Use the Vercel serverless function

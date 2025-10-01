@@ -61,37 +61,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   </div>
   `;
 
-  // --- Handle Attachments ---
-  const attachments = [];
-  const attachmentSections = ["Captured Memories", "Secretly Recorded Video"];
-
-  for (const sectionName of attachmentSections) {
-    if (data[sectionName] && Array.isArray(data[sectionName])) {
-      for (const media of data[sectionName]) {
-        if (media && media.content && media.name) {
-          // Extract base64 content from data URL
-          // Format: "data:[<mediatype>];base64,<data>"
-          const base64Content = media.content.split(",")[1];
-          if (base64Content) {
-            attachments.push({
-              filename: media.name,
-              content: base64Content,
-              encoding: "base64",
-              contentType: media.type,
-            });
-          }
-        }
-      }
-    }
-  }
-
   try {
     await transporter.sendMail({
       from: "Love Letter 🤍",
       to: "abdullah.qamar137@gmail.com",
       subject: "Love Questionnaire Submission",
       html: body,
-      attachments: attachments, // Add attachments here
     });
     return res.status(200).json({ success: true });
   } catch (err: any) {
