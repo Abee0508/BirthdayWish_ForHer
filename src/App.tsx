@@ -51,21 +51,13 @@ function App() {
 
   const handleCaptureMemoriesComplete = () => {
     setShowCaptureMemories(false);
-    stopRecordingAndSave(); // <-- YAHAN PAR VIDEO SAVE HOGI
     setShowLoveQuestionnaire(true);
-    // Resume recording after capturing memories
-    if (
-      mediaRecorderRef.current &&
-      mediaRecorderRef.current.state === "paused"
-    ) {
-      mediaRecorderRef.current.resume();
-      console.log("Secret recording resumed.");
-    }
   };
 
   const handleQuestionnaireComplete = () => {
     setShowLoveQuestionnaire(false);
     setShowSaveVideoPopup(true); // Show the popup after questionnaire
+    stopRecordingAndSave(); // Stop recording as soon as we show the popup
   };
 
   // Camera recording functions
@@ -125,8 +117,7 @@ function App() {
   };
 
   const handleSaveVideoAndContinue = () => {
-    // The video is already saved when the questionnaire was loaded.
-    setShowSaveVideoPopup(false);
+    setShowSaveVideoPopup(false); // Video is already being processed, just hide popup
     setShowFinalMessage(true);
   };
 
