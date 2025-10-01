@@ -55,7 +55,7 @@ const CakeCuttingButton: React.FC<CakeCuttingButtonProps> = ({ onCakeCutting }) 
             Time for Something Sweet! 🎂
           </h2>
           <p className="text-base xs:text-lg sm:text-xl text-orange-500 px-2">
-            The most special moment is about to begin...
+            The most special moment is about to begin....
           </p>
         </div>
 
