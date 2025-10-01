@@ -171,11 +171,6 @@ function App() {
         />
       ) : showFinalMessage ? (
         <FinalMessage />
-      ) : showLoveQuestionnaire ? ( // This block was moved
-        <LoveQuestionnaire
-          onComplete={handleQuestionnaireComplete}
-          secretVideoData={secretVideoData}
-        />
       ) : showSaveVideoPopup ? (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center animate-fadeIn">
           <div className="bg-white rounded-2xl shadow-2xl p-8 m-4 flex flex-col items-center text-center max-w-md">
@@ -197,6 +192,16 @@ function App() {
             </button>
           </div>
         </div>
+      ) : (
+        <>
+          <BackgroundAudio onCameraStart={handleCameraStart} />
+          <HeroSection />
+          <ScrollingHeart />
+          <Gallery />
+          <ImageReveal />
+          <CakeCuttingButton onCakeCutting={handleCakeCuttingStart} />
+          <Footer />
+        </>
       )}
     </div>
   );
