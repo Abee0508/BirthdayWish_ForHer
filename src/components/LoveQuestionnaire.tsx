@@ -127,7 +127,7 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
             className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 mb-2"
             style={{ fontFamily: "Georgia, serif" }}
           >
-            Love Questionnaireeeee 💕
+            Love Questionnaire 💕
           </h2>
           <p className="text-sm xs:text-base sm:text-lg text-pink-500 px-2">
             Answer with your heart, my love 💖
