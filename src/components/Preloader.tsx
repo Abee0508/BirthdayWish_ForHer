@@ -39,13 +39,13 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   return (
     <div className="preloader-text fixed inset-0 bg-gradient-to-br from-pink-200 via-rose-100 to-red-200 flex items-center justify-center z-50">
       <div className="text-center">
-        <div 
-          ref={textRef} 
-          className="relative text-8xl md:text-9xl font-bold font-dancing mb-8"
+        <div
+          ref={textRef}
+          className="relative text-6xl xs:text-7xl sm:text-8xl md:text-9xl font-bold font-dancing mb-8"
           style={{
-            WebkitTextStroke: '3px #ec4899',
-            WebkitTextFillColor: 'transparent',
-            fontFamily: 'Dancing Script, cursive'
+            WebkitTextStroke: "3px #ec4899",
+            WebkitTextFillColor: "transparent",
+            fontFamily: "Dancing Script, cursive",
           }}
         >
           <span className="relative inline-block">
@@ -54,18 +54,18 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               ref={fillRef}
               className="absolute inset-0 left-0 top-0 bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent overflow-hidden pointer-events-none select-none"
               style={{
-                width: '0%',
-                WebkitTextFillColor: '#ec4899',
-                WebkitTextStroke: '0px',
-                display: 'inline-block',
-                whiteSpace: 'nowrap'
+                width: "0%",
+                WebkitTextFillColor: "#ec4899",
+                WebkitTextStroke: "0px",
+                display: "inline-block",
+                whiteSpace: "nowrap",
               }}
             >
               TO ABDULLAH
             </span>
           </span>
         </div>
-        
+
         {/* Floating Hearts */}
         <div className="flex justify-center space-x-4">
           {[...Array(5)].map((_, i) => (
@@ -78,7 +78,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-8 text-pink-600 text-xl font-medium">
           Loading something special...
         </div>

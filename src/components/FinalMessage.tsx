@@ -75,7 +75,7 @@ const FinalMessage: React.FC = () => {
         </div>
 
         {/* Main Message */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 xs:p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl border border-pink-200">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 xs:p-6 sm:p-8 shadow-2xl border border-pink-200">
           <div
             className="text-sm xs:text-base sm:text-lg md:text-xl text-pink-700 leading-relaxed space-y-3 sm:space-y-4 md:space-y-6"
             style={{ fontFamily: "Georgia, serif" }}
@@ -110,7 +110,7 @@ const FinalMessage: React.FC = () => {
           </div>
 
           {/* Signature */}
-          <div className="mt-6 sm:mt-8 text-right">
+          <div className="mt-4 xs:mt-6 sm:mt-8 text-right">
             <p
               className="text-base xs:text-lg sm:text-xl text-pink-600 font-medium"
               style={{ fontFamily: "Dancing Script, cursive" }}
@@ -127,7 +127,7 @@ const FinalMessage: React.FC = () => {
         </div>
 
         {/* Bottom decoration */}
-        <div className="mt-6 sm:mt-8 md:mt-10 flex flex-col items-center">
+        <div className="mt-4 sm:mt-6 md:mt-8 flex flex-col items-center">
           <div className="text-4xl sm:text-5xl md:text-6xl mb-6">
             🌹💖🎂🎉💕
           </div>

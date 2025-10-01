@@ -80,17 +80,17 @@ const HeroSection: React.FC = () => {
 
       <div className="text-center z-10 px-4">
         <div
-          ref={heartsRef}
-          className="flex justify-center space-x-4 xs:space-x-6 sm:space-x-8 mb-6 sm:mb-8"
+          ref={heartsRef} // Responsive spacing and size for hearts
+          className="flex justify-center space-x-4 xs:space-x-6 sm:space-x-8 mb-4 sm:mb-6 md:mb-8"
         >
-          <Heart className="text-pink-500 w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 fill-current" />
-          <Sparkles className="text-gold-400 w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 fill-current text-yellow-400" />
-          <Heart className="text-red-500 w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 fill-current" />
+          <Heart className="text-pink-500 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 fill-current" />
+          <Sparkles className="text-yellow-400 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 fill-current" />
+          <Heart className="text-red-500 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 fill-current" />
         </div>
 
         <div
           ref={titleRef}
-          className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-pink-600 via-red-500 to-rose-600 bg-clip-text text-transparent mb-4 sm:mb-6"
+          className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-pink-600 via-red-500 to-rose-600 bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-6"
           style={{ fontFamily: "Georgia, serif" }}
         >
           Happy Birthday
@@ -98,20 +98,20 @@ const HeroSection: React.FC = () => {
 
         <div
           ref={subtitleRef}
-          className="text-xl xs:text-2xl sm:text-3xl md:text-4xl text-pink-700 font-medium"
+          className="text-xl xs:text-2xl sm:text-3xl md:text-4xl text-pink-700 font-medium px-2"
           style={{ fontFamily: "Georgia, serif" }}
         >
           My Beautiful Angel 💕
         </div>
 
-        <div className="mt-6 sm:mt-8 text-base xs:text-lg md:text-xl text-pink-600 max-w-2xl mx-auto leading-relaxed px-2">
+        <div className="mt-4 sm:mt-6 md:mt-8 text-base xs:text-lg md:text-xl text-pink-600 max-w-2xl mx-auto leading-relaxed px-2">
           Today is all about celebrating the most amazing person in my life...
           You! 🌹
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-center">
+ rror     <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-center">
         <div className="text-pink-500 text-xl sm:text-2xl">💖</div>
         <div className="text-pink-400 text-xs sm:text-sm mt-1 sm:mt-2">
           Scroll Down

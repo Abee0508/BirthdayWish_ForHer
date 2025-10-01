@@ -83,10 +83,10 @@ const CakeCutting: React.FC<CakeCuttingProps> = ({ onComplete }) => {
       {/* Cake */}
       <div
         ref={cakeRef}
-        className="relative w-[150px] h-[150px] xs:w-[180px] xs:h-[180px] sm:w-[200px] sm:h-[200px] flex items-center justify-center"
+        className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[250px] md:h-[250px] flex items-center justify-center"
       >
         <div
-          className="text-7xl xs:text-8xl sm:text-9xl relative select-none"
+          className="text-8xl sm:text-9xl md:text-[120px] relative select-none"
           style={{ userSelect: "none" }}
         >
           {/* Cake base */}
@@ -170,7 +170,7 @@ const CakeCutting: React.FC<CakeCuttingProps> = ({ onComplete }) => {
         >
           Cut the Birthday Cake! 🎂
         </h2>
-        <p className="text-base xs:text-lg sm:text-xl text-orange-500">
+        <p className="text-sm xs:text-base sm:text-lg md:text-xl text-orange-500">
           Click on the cake to cut it! ({3 - cuts.length} cuts remaining)
         </p>
       </div>

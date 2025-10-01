@@ -95,13 +95,14 @@ const imageUrl = "/images/imgg.jpg";
 
         <div className="relative">
           <div
-            ref={imageContainerRef}
-            className="relative w-64 h-64 xs:w-72 xs:h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 mx-auto overflow-hidden"
+            ref={imageContainerRef} // Made the image container responsive
+            className="relative w-full max-w-[250px] xs:max-w-[300px] sm:max-w-sm md:max-w-md aspect-square mx-auto"
           >
             {/* Top-left piece */}
             <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-tl-2xl shadow-lg"
               style={{
+                // The background properties are fine as they are
                 backgroundImage: `url(${imageUrl})`,
                 backgroundSize: "200% 200%",
                 backgroundPosition: "0% 0%",
@@ -112,6 +113,7 @@ const imageUrl = "/images/imgg.jpg";
             <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-tr-2xl shadow-lg"
               style={{
+                // The background properties are fine as they are
                 left: "50%",
                 backgroundImage: `url(${imageUrl})`,
                 backgroundSize: "200% 200%",
@@ -123,6 +125,7 @@ const imageUrl = "/images/imgg.jpg";
             <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-bl-2xl shadow-lg"
               style={{
+                // The background properties are fine as they are
                 top: "50%",
                 backgroundImage: `url(${imageUrl})`,
                 backgroundSize: "200% 200%",
@@ -134,6 +137,7 @@ const imageUrl = "/images/imgg.jpg";
             <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-br-2xl shadow-lg"
               style={{
+                // The background properties are fine as they are
                 top: "50%",
                 left: "50%",
                 backgroundImage: `url(${imageUrl})`,

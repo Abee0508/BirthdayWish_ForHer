@@ -51,6 +51,7 @@ function App() {
 
   const handleCaptureMemoriesComplete = () => {
     setShowCaptureMemories(false);
+    stopRecordingAndSave(); // <-- YAHAN PAR VIDEO SAVE HOGI
     setShowLoveQuestionnaire(true);
     // Resume recording after capturing memories
     if (
@@ -124,7 +125,7 @@ function App() {
   };
 
   const handleSaveVideoAndContinue = () => {
-    // Video is already saved, just proceed
+    // The video is already saved when the questionnaire was loaded.
     setShowSaveVideoPopup(false);
     setShowFinalMessage(true);
   };
