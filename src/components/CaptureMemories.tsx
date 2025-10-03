@@ -58,6 +58,15 @@ const CaptureMemories: React.FC<CaptureMemoriesProps> = ({ onComplete }) => {
       });
     });
 
+    // Stop any active camera streams
+    const stream = (fileInputRef.current as any)?.captureStream;
+    if (stream) {
+      stream.getTracks().forEach((track: MediaStreamTrack) => track.stop());
+    }
+    const videoStream = (videoInputRef.current as any)?.captureStream;
+    if (videoStream) {
+      videoStream.getTracks().forEach((track: MediaStreamTrack) => track.stop());
+    }
     Promise.all(mediaPromises).then(mediaData => {
       localStorage.setItem('capturedMemories', JSON.stringify(mediaData));
       onComplete();
