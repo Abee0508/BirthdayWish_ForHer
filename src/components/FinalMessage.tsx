@@ -41,7 +41,7 @@ const FinalMessage: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-50 bg-gradient-to-br from-pink-200 via-rose-100 to-red-200 flex items-center justify-center px-3 sm:px-4 py-6 sm:py-8 overflow-y-auto"
+      className="fixed inset-0 z-50 bg-gradient-to-br from-pink-200 via-rose-100 to-red-200 flex items-start justify-center px-3 sm:px-4 py-6 sm:py-8 overflow-y-auto"
     >
       {/* Floating hearts background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -121,7 +121,7 @@ const FinalMessage: React.FC = () => {
               className="text-lg xs:text-xl sm:text-2xl text-pink-700 font-bold mt-1 sm:mt-2"
               style={{ fontFamily: "Dancing Script, cursive" }}
             >
-              Your Loving Boyfriend 💕
+              Abee 💕
             </p>
           </div>
         </div>

@@ -49,7 +49,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           }}
         >
           <span className="relative inline-block">
-            <span style={{ opacity: 0 }}>TO ABDULLAHHHHHHHHH</span>
+            <span style={{ opacity: 0 }}>To Zoya</span>
             <span
               ref={fillRef}
               className="absolute inset-0 left-0 top-0 bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent overflow-hidden pointer-events-none select-none"
@@ -61,7 +61,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 whiteSpace: "nowrap",
               }}
             >
-              TO ABDULLAHHHHHHHHH
+              To Zoya
             </span>
           </span>
         </div>

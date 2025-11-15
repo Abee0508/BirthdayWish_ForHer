@@ -10,32 +10,32 @@ const ImageReveal: React.FC = () => {
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const shimmerRef = useRef<HTMLDivElement>(null);
 
-  // Using a beautiful couple image from Pexels
-const imageUrl = "/images/imgg.jpg";
-
+  // Using a single beautiful couple image
+  const imageUrl = "/images/we.jpg";
 
   useEffect(() => {
     if (!imageContainerRef.current) return;
 
-    const pieces = imageContainerRef.current.querySelectorAll('.image-piece');
-    
+    const pieces = imageContainerRef.current.querySelectorAll(".image-piece");
+
     // Initial positions - spread to corners
-    gsap.set(pieces[0], { x: -200, y: -200, rotation: -15 }); // Top-left
-    gsap.set(pieces[1], { x: 200, y: -200, rotation: 15 });   // Top-right
-    gsap.set(pieces[2], { x: -200, y: 200, rotation: 15 });   // Bottom-left
-    gsap.set(pieces[3], { x: 200, y: 200, rotation: -15 });   // Bottom-right
+    gsap.set(pieces[0], { x: -300, y: 0, rotation: -25 }); // Top-left
+    gsap.set(pieces[1], { x: 300, y: 0, rotation: 25 }); // Top-right
+    gsap.set(pieces[2], { x: -300, y: 0, rotation: 25 }); // Bottom-left
+    gsap.set(pieces[3], { x: 300, y: 0, rotation: -25 }); // Bottom-right
 
     // Title animation
-    gsap.fromTo(titleRef.current,
+    gsap.fromTo(
+      titleRef.current,
       { y: 50, opacity: 0 },
-      { 
-        y: 0, 
-        opacity: 1, 
+      {
+        y: 0,
+        opacity: 1,
         duration: 1,
         scrollTrigger: {
           trigger: titleRef.current,
-          start: 'top 80%',
-        }
+          start: "top 80%",
+        },
       }
     );
 
@@ -43,11 +43,11 @@ const imageUrl = "/images/imgg.jpg";
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: imageContainerRef.current,
-        start: 'top 90%',
-        end: 'bottom 40%',
+        start: "top 70%",
+        end: "bottom 50%",
         markers: false,
         scrub: 1,
-      }
+      },
     });
 
     // Image pieces animation - ensure they meet at viewport center
@@ -56,28 +56,32 @@ const imageUrl = "/images/imgg.jpg";
       y: 0,
       rotation: 0,
       duration: 2,
-      ease: 'power2.out',
-      stagger: 0.1
+      ease: "power2.out",
+      stagger: 0.1,
     })
-    .to(shimmerRef.current, {
-      opacity: 1,
-      duration: 0.3,
-      ease: 'power2.out'
-    }, '-=0.5')
-    .to(shimmerRef.current, {
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power2.out'
-    });
+      .to(
+        shimmerRef.current,
+        {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        "-=0.5"
+      )
+      .to(shimmerRef.current, {
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      });
 
     return () => {
-      ScrollTrigger.getAll().forEach(st => st.kill());
+      ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, []);
 
   return (
     <section
-      ref={containerRef}
+      ref={containerRef} // Add overflow-hidden to the parent section
       className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-rose-100 py-12 sm:py-16 md:py-20 px-3 sm:px-4 flex items-center justify-center"
     >
       <div className="max-w-4xl mx-auto text-center">
@@ -96,54 +100,58 @@ const imageUrl = "/images/imgg.jpg";
         <div className="relative">
           <div
             ref={imageContainerRef} // Made the image container responsive
-            className="relative w-full max-w-[250px] xs:max-w-[300px] sm:max-w-sm md:max-w-md aspect-square mx-auto"
+            className="relative w-full max-w-[250px] xs:max-w-[300px] sm:max-w-sm md:max-w-md mx-auto"
           >
             {/* Top-left piece */}
             <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-tl-2xl shadow-lg"
               style={{
-                // The background properties are fine as they are
                 backgroundImage: `url(${imageUrl})`,
                 backgroundSize: "200% 200%",
                 backgroundPosition: "0% 0%",
               }}
-            />
+            ></div>
 
             {/* Top-right piece */}
             <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-tr-2xl shadow-lg"
               style={{
-                // The background properties are fine as they are
                 left: "50%",
                 backgroundImage: `url(${imageUrl})`,
                 backgroundSize: "200% 200%",
                 backgroundPosition: "100% 0%",
               }}
-            />
+            ></div>
 
             {/* Bottom-left piece */}
             <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-bl-2xl shadow-lg"
               style={{
-                // The background properties are fine as they are
                 top: "50%",
                 backgroundImage: `url(${imageUrl})`,
                 backgroundSize: "200% 200%",
                 backgroundPosition: "0% 100%",
               }}
-            />
+            ></div>
 
             {/* Bottom-right piece */}
             <div
               className="image-piece absolute w-1/2 h-1/2 overflow-hidden rounded-br-2xl shadow-lg"
               style={{
-                // The background properties are fine as they are
                 top: "50%",
                 left: "50%",
                 backgroundImage: `url(${imageUrl})`,
                 backgroundSize: "200% 200%",
                 backgroundPosition: "100% 100%",
               }}
+            ></div>
+
+            {/* This is a hidden image used to set the container's aspect ratio correctly */}
+            <img
+              src={imageUrl}
+              alt=""
+              aria-hidden="true"
+              className="w-full h-auto invisible"
             />
 
             {/* Gift box shimmer effect */}

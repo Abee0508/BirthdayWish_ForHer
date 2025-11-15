@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-pink-400/30 pt-4 sm:pt-5 md:pt-6 mt-6 sm:mt-7 md:mt-8">
           <p className="text-xs xs:text-sm sm:text-base text-pink-200">
-            Made with 💖 by someone who loves you to the moon and back
+            Made with 💖 by Abee
           </p>
           <div className="mt-2 text-2xl xs:text-3xl sm:text-4xl">
             🎂🎉💕🌹🎈

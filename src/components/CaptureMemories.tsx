@@ -46,7 +46,7 @@ const CaptureMemories: React.FC<CaptureMemoriesProps> = ({ onComplete }) => {
     
     // Convert files to base64 and save to localStorage for email sending
     const mediaPromises = capturedMedia.map(media => {
-      return new Promise((resolve, reject) => {
+      return new Promise<any>((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(media.file);
         reader.onload = () => resolve({

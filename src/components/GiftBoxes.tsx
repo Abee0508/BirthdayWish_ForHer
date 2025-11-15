@@ -94,13 +94,16 @@ const GiftBoxes: React.FC<GiftBoxesProps> = ({ onComplete }) => {
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="fixed inset-0 z-50 bg-gradient-to-br from-purple-200 via-pink-100 to-red-100 flex flex-col items-center justify-center px-2 sm:px-4 overflow-y-auto"
     >
       {/* Header */}
       <div className="text-center mb-6 sm:mb-8">
-        <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl font-bold text-purple-600 mb-2 sm:mb-4" style={{ fontFamily: 'Georgia, serif' }}>
+        <h2
+          className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl font-bold text-purple-600 mb-2 sm:mb-4"
+          style={{ fontFamily: "Georgia, serif" }}
+        >
           Choose Your Gifts! 🎁
         </h2>
         <p className="text-base xs:text-lg sm:text-xl text-purple-500 mb-1 sm:mb-2">
@@ -112,21 +115,25 @@ const GiftBoxes: React.FC<GiftBoxesProps> = ({ onComplete }) => {
       </div>
 
       {/* Gift Boxes Grid */}
-  <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-3 xs:gap-4 md:gap-6 mb-6 sm:mb-8 w-full max-w-lg sm:max-w-2xl mx-auto">
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-3 xs:gap-4 md:gap-6 mb-6 sm:mb-8 w-full max-w-lg sm:max-w-2xl mx-auto">
         {gifts.map((gift, index) => (
           <div
             key={index}
-            className={`gift-box gift-box-${index} cursor-pointer transform transition-all duration-300 ${
-              selectedBoxes.includes(index) ? 'opacity-50' : 'hover:scale-105 md:hover:scale-110'
+            className={`gift-box d-flex justify-content-center gift-box-${index} cursor-pointer transform transition-all duration-300 ${
+              selectedBoxes.includes(index)
+                ? "opacity-50"
+                : "hover:scale-105 md:hover:scale-110"
             }`}
             onClick={() => handleBoxClick(index)}
           >
-            <div className={`w-16 h-16 xs:w-20 xs:h-20 md:w-24 md:h-24 rounded-lg shadow-lg flex items-center justify-center text-3xl xs:text-4xl ${
-              openedBoxes.includes(index) 
-                ? 'bg-gradient-to-br from-yellow-400 to-orange-500' 
-                : 'bg-gradient-to-br from-pink-500 to-purple-600'
-            }`}>
-              {openedBoxes.includes(index) ? '✨' : '🎁'}
+            <div
+              className={`w-16 h-16 xs:w-20 xs:h-20 md:w-24 md:h-24 rounded-lg shadow-lg flex items-center justify-center text-3xl xs:text-4xl ${
+                openedBoxes.includes(index)
+                  ? "bg-gradient-to-br from-yellow-400 to-orange-500"
+                  : "bg-gradient-to-br from-pink-500 to-purple-600"
+              }`}
+            >
+              {openedBoxes.includes(index) ? "✨" : "🎁"}
             </div>
           </div>
         ))}
@@ -134,9 +141,7 @@ const GiftBoxes: React.FC<GiftBoxesProps> = ({ onComplete }) => {
 
       {/* Current Gift Display */}
       {currentGift && (
-        <div 
-          className="current-gift bg-white/90 backdrop-blur-sm rounded-2xl p-4 xs:p-6 shadow-xl max-w-xs xs:max-w-md text-center mt-2 xs:mt-4"
-        >
+        <div className="current-gift bg-white/90 backdrop-blur-sm rounded-2xl p-4 xs:p-6 shadow-xl max-w-xs xs:max-w-md text-center mt-2 xs:mt-4">
           <div className="text-xl xs:text-2xl mb-1 xs:mb-2">🎁</div>
           <p className="text-base xs:text-lg text-purple-700 font-medium">
             {currentGift}
@@ -150,7 +155,8 @@ const GiftBoxes: React.FC<GiftBoxesProps> = ({ onComplete }) => {
       {/* Instructions */}
       <div className="absolute bottom-4 sm:bottom-8 left-0 w-full text-center px-2">
         <p className="text-xs xs:text-sm sm:text-base text-purple-600">
-          Click on the gift boxes to open them and reveal your special surprises! 💖
+          Click on the gift boxes to open them and reveal your special
+          surprises! 💖
         </p>
       </div>
     </div>

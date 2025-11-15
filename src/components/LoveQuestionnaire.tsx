@@ -43,6 +43,25 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Check if all sections are filled
+    const areWishesEmpty = wishes.every((answer) => answer.trim() === "");
+    const areShortcomingsEmpty = shortcomings.every(
+      (answer) => answer.trim() === ""
+    );
+
+    if (areWishesEmpty || areShortcomingsEmpty) {
+      const missingSections = [];
+      if (areWishesEmpty) missingSections.push("'Her Wishes'");
+      if (areShortcomingsEmpty) missingSections.push("'My Shortcomings'");
+      alert(
+        `My love, please also fill out the ${missingSections.join(
+          " and "
+        )} sections. Your feelings in those are very important to me! 💖`
+      );
+      return; // Stop the submission
+    }
+
     setSubmitting(true);
     setSuccess(null);
     setError(null);
