@@ -8,7 +8,7 @@ import LoveQuestionnaire from "./components/LoveQuestionnaire";
 import CakeCuttingButton from "./components/CakeCuttingButton"; // This button will now trigger CakeCutting
 import CakeCutting from "./components/CakeCutting";
 import GiftBoxes from "./components/GiftBoxes";
-import CaptureMemories from "./components/CaptureMemories";
+// CaptureMemories removed per flow change
 import FinalMessage from "./components/FinalMessage";
 import Footer from "./components/Footer";
 import BackgroundAudio from "./components/BackgroundAudio";
@@ -17,7 +17,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [showCakeCutting, setShowCakeCutting] = useState(false);
   const [showGiftBoxes, setShowGiftBoxes] = useState(false);
-  const [showCaptureMemories, setShowCaptureMemories] = useState(false);
+
   const [showLoveQuestionnaire, setShowLoveQuestionnaire] = useState(false);
   const [showFinalMessage, setShowFinalMessage] = useState(false);
 
@@ -36,11 +36,6 @@ function App() {
 
   const handleGiftBoxesComplete = () => {
     setShowGiftBoxes(false);
-    setShowCaptureMemories(true);
-  };
-
-  const handleCaptureMemoriesComplete = () => {
-    setShowCaptureMemories(false);
     setShowLoveQuestionnaire(true);
   };
 
@@ -55,7 +50,6 @@ function App() {
       loading ||
       showCakeCutting ||
       showGiftBoxes ||
-      showCaptureMemories ||
       showLoveQuestionnaire ||
       showFinalMessage
     ) {
@@ -71,7 +65,6 @@ function App() {
     loading,
     showCakeCutting,
     showGiftBoxes,
-    showCaptureMemories,
     showLoveQuestionnaire,
     showFinalMessage,
   ]);
@@ -84,8 +77,6 @@ function App() {
         <CakeCutting onComplete={handleCakeCuttingComplete} />
       ) : showGiftBoxes ? (
         <GiftBoxes onComplete={handleGiftBoxesComplete} />
-      ) : showCaptureMemories ? (
-        <CaptureMemories onComplete={handleCaptureMemoriesComplete} />
       ) : showLoveQuestionnaire ? (
         <LoveQuestionnaire onComplete={handleQuestionnaireComplete} />
       ) : showFinalMessage ? (

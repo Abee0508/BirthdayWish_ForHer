@@ -64,7 +64,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     await transporter.sendMail({
       from: "Love Letter 🤍",
-      to: "abdullah.qamar137@gmail.com",
+      to: "tahafaisahussian62@gmail.com",
       subject: "Love Questionnaire Submission",
       html: body,
     });

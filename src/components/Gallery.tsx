@@ -3,19 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Camera, Heart } from 'lucide-react';
 
-import zoya1 from "../../public/images/zoya1.jpeg";
-import zoya2 from "../../public/images/zoya2.jpeg";
-import zoya3 from "../../public/images/zoya3.jpeg";
-import zoya4 from "../../public/images/zoya4.jpeg";
-import zoya5 from "../../public/images/zoya5.jpeg";
-import zoya6 from "../../public/images/zoya6.jpeg";
-import zoya7 from "../../public/images/zoya7.jpeg";
-import zoya8 from "../../public/images/zoya8.jpeg";
-import zoya9 from "../../public/images/zoya9.jpeg";
-import zoya10 from "../../public/images/zoya10.jpeg";
-import zoya11 from "../../public/images/zoya11.jpeg";
-import zoya12 from "../../public/images/zoya12.jpeg";
-
 gsap.registerPlugin(ScrollTrigger);
 
 const Gallery: React.FC = () => {
@@ -23,19 +10,19 @@ const Gallery: React.FC = () => {
   const titleRef = useRef<HTMLDivElement>(null);
   const photosRef = useRef<HTMLDivElement>(null);
 
-  const photos = [
-    zoya1,
-    zoya2,
-    zoya3,
-    zoya4,
-    zoya5,
-    zoya6,
-    zoya7,
-    zoya8,
-    zoya9,
-    zoya10,
-    zoya11,
-    zoya12,
+  const videos = [
+    "/images/videos/khansa1.mp4",
+    "/images/videos/khansa2.mp4",
+    "/images/videos/khansa3.mp4",
+    "/images/videos/khansa4.mp4",
+    "/images/videos/khansa5.mp4",
+    "/images/videos/khansa6.mp4",
+    "/images/videos/khansa7.mp4",
+    "/images/videos/khansa8.mp4",
+    "/images/videos/khansa9.mp4",
+    "/images/videos/khansa10.mp4",
+    "/images/videos/khansa11.mp4",
+    "/images/videos/khansa12.mp4",
   ];
 
   useEffect(() => {
@@ -54,9 +41,9 @@ const Gallery: React.FC = () => {
     );
 
     if (photosRef.current) {
-      const photos = photosRef.current.children;
+      const videos = photosRef.current.children;
       gsap.fromTo(
-        photos,
+        videos,
         { scale: 0, rotation: 10, opacity: 0 },
         {
           scale: 1,
@@ -91,12 +78,12 @@ const Gallery: React.FC = () => {
               className="text-4xl md:text-6xl font-bold text-pink-600"
               style={{ fontFamily: "Georgia, serif" }}
             >
-              Our Beautiful Memories
+              The Girl Who Owns My Heart
             </h2>
             <Heart className="text-red-500 w-8 h-8 ml-3 fill-current" />
           </div>
           <p className="text-xl text-pink-500 mt-4">
-            Every moment with you is picture perfect 📸💕
+            You make every moment look beautiful without even trying 📸💕
           </p>
         </div>
 
@@ -104,15 +91,19 @@ const Gallery: React.FC = () => {
           ref={photosRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {photos.map((photo, index) => (
+          {videos.map((video, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 aspect-square bg-gray-200"
             >
-              <img
-                src={photo}
-                alt={`Memory ${index + 1}`}
-                className="w-full h-auto transition-transform duration-300 group-hover:scale-110"
+              <video
+                src={video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                style={{ display: "block" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-pink-500/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 text-white">
@@ -130,7 +121,7 @@ const Gallery: React.FC = () => {
 
         <div className="text-center mt-12">
           <p className="text-lg text-pink-600 italic">
-            "Each photo tells our love story... 🌹"
+            "Every picture whispers how beautiful you are to me... 🌹"
           </p>
         </div>
       </div>

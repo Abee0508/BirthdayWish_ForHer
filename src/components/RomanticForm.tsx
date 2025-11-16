@@ -64,7 +64,7 @@ const RomanticForm: React.FC = () => {
     }).join('\n\n');
 
     const emailData = {
-      to_email: 'abdullah.qamar137@gmail.com',
+      to_email: 'tahafaisahussian62@gmail.com',
       from_name: 'Your Beautiful Girlfriend 💖',
       subject: '💕 Love Questionnaire Responses - Birthday Special 💕',
       message: `

@@ -100,7 +100,7 @@ const ImageReveal: React.FC = () => {
         <div className="relative">
           <div
             ref={imageContainerRef} // Made the image container responsive
-            className="relative w-full max-w-[250px] xs:max-w-[300px] sm:max-w-sm md:max-w-md mx-auto"
+            className="relative split-image w-full max-w-[250px] xs:max-w-[300px] sm:max-w-sm md:max-w-md mx-auto"
           >
             {/* Top-left piece */}
             <div

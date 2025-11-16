@@ -101,17 +101,16 @@ const HeroSection: React.FC = () => {
           className="text-xl xs:text-2xl sm:text-3xl md:text-4xl text-pink-700 font-medium px-2"
           style={{ fontFamily: "Georgia, serif" }}
         >
-          My Beautiful Angel 💕
+          TO MY ANGLE 💕
         </div>
 
         <div className="mt-4 sm:mt-6 md:mt-8 text-base xs:text-lg md:text-xl text-pink-600 max-w-2xl mx-auto leading-relaxed px-2">
-          Today is all about celebrating the most amazing person in my life...
-          You! 🌹
+          With you, every day feels beautiful… but today belongs only to you. 🌹
         </div>
       </div>
 
       {/* Scroll indicator */}
-     <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-center">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-center">
         <div className="text-pink-500 text-xl sm:text-2xl">💖</div>
         <div className="text-pink-400 text-xs sm:text-sm mt-1 sm:mt-2">
           Scroll Down

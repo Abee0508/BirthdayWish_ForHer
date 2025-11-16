@@ -32,3 +32,8 @@
 .animate-scaleIn {
   animation: scaleIn 0.4s ease-out;
 }
+
+
+.split-image {
+    width: 220px;
+}

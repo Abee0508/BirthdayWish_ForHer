@@ -75,25 +75,6 @@ const CaptureMemories: React.FC<CaptureMemoriesProps> = ({ onComplete }) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-gradient-to-br from-pink-200 via-rose-100 to-purple-200 flex flex-col items-center justify-start px-3 sm:px-4 py-6 sm:py-8 overflow-y-auto">
-      {/* Header */}
-      <div className="text-center mb-6 sm:mb-8 animate-fadeIn">
-        <div className="text-4xl sm:text-6xl mb-3 sm:mb-4 animate-bounce">
-          💕
-        </div>
-        <h2
-          className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 mb-2 sm:mb-3"
-          style={{ fontFamily: "Georgia, serif" }}
-        >
-          Capture Your Live Moments! 📸
-        </h2>
-        <p className="text-sm xs:text-base sm:text-lg text-pink-500 mb-2 px-2">
-          Apni khushi ke expressions aur reactions capture karein 💖
-        </p>
-        <p className="text-xs xs:text-sm sm:text-base text-pink-400">
-          Photos ya videos add karein ({capturedMedia.length}/{MAX_MEDIA})
-        </p>
-      </div>
-
       {/* Capture Buttons */}
       <div className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center">
         <button

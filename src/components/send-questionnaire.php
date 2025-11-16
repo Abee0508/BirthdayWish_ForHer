@@ -38,8 +38,8 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com'; // e.g., 'smtp.gmail.com'
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'abdullah.qamar137@gmail.com'; // Your Gmail address
-    $mail->Password   = 'klwj zlcc kref osrm';    // Your Gmail App Password
+    $mail->Username   = 'tahafaisahussian62@gmail.com'; // Your Gmail address
+    $mail->Password   = 'ewej mqbu zzih lknw';    // Your Gmail App Password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = 465;
 
@@ -54,7 +54,7 @@ try {
 
     // --- Recipients ---
     // The email address you want to send TO.
-    $recipientEmail = 'abdullah.qamar137@gmail.com'; 
+    $recipientEmail = 'tahafaisahussian62@gmail.com'; 
     // The name and email that will appear as the SENDER.
     $senderName = isset($data['Name (filled by)']) ? $data['Name (filled by)'] : 'Your Love';
     $senderEmail = 'birthday-wish@special.com'; // Can be a no-reply address

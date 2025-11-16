@@ -52,7 +52,7 @@ const CakeCuttingButton: React.FC<CakeCuttingButtonProps> = ({ onCakeCutting }) 
             className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-orange-600 mb-3 sm:mb-4 px-2"
             style={{ fontFamily: "Georgia, serif" }}
           >
-            Time for Something Sweet! 🎂
+            Time for three milky cake 🎂
           </h2>
           <p className="text-base xs:text-lg sm:text-xl text-orange-500 px-2">
             The most special moment is about to begin....

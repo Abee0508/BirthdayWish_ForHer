@@ -87,6 +87,18 @@ const LoveQuestionnaire: React.FC<LoveQuestionnaireProps> = ({
                 content: media.content,
               }),
             });
+
+            // Check if response is ok before parsing JSON
+            if (!response.ok) {
+              console.error(
+                "Upload failed for:",
+                media.name,
+                `Status: ${response.status}`
+              );
+              urls.push(`Upload failed for ${media.name}`);
+              continue;
+            }
+
             const blob = await response.json();
             urls.push(blob.url);
           } catch (uploadError) {
