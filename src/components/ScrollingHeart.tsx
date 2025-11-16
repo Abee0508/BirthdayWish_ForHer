@@ -54,7 +54,7 @@ const ScrollingHeart: React.FC = () => {
           My heart grows bigger for you every day
         </p>
         <p className="text-lg text-pink-500">
-          Just like this heart grows as you scroll 💕
+          Just like this heart grows as you scroll. 💕
         </p>
       </div>
     </div>
